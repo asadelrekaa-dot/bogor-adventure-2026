@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jabatan - Bogor Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-wrap { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+        .page-wrap .back-link { text-decoration: none; color: #fff; font-size: clamp(11px, 3vw, 13px); font-weight: bold; background: #8c5d52; padding: 8px 16px; border-radius: 20px; align-self: flex-start; }
+        .page-wrap h2 { font-size: clamp(17px, 5.5vw, 22px); font-style: italic; color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.2); margin: 0; word-break: break-word; }
+        .member-list { display: flex; flex-direction: column; gap: 10px; }
+        .member-card { background: #fbeee6; border-radius: 14px; padding: 12px 14px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); border: 2px solid #bd9687; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+        .member-card .name { font-size: clamp(12px, 3.5vw, 14px); font-weight: bold; color: #5a4b41; word-break: break-word; }
+        .member-card .role { font-size: clamp(9px, 2.8vw, 11px); color: #8c5d52; }
+        .member-card .badge { background: #8c5d52; color: #fff; font-size: clamp(8px, 2.5vw, 10px); padding: 3px 10px; border-radius: 10px; flex-shrink: 0; }
+        .empty-state { text-align: center; color: #fff; font-style: italic; font-size: clamp(11px, 3vw, 13px); opacity: 0.8; padding: 30px; }
+        .sub-group { margin-top: 10px; }
+        .sub-group .sub-title { font-size: clamp(10px, 3vw, 12px); font-weight: bold; color: #8c5d52; margin-bottom: 6px; padding-left: 4px; }
+        .sub-group .member-card { border-color: #d4b5a5; }
+    </style>
+</head>
+<body>
+    <div class="app-container page-wrap">
+        <a href="index.html" class="back-link">← KEMBALI</a>
+        <h2 id="pageTitle">Jabatan</h2>
+        <div id="memberList" class="member-list"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const type = new URLSearchParams(window.location.search).get('type') || 'inti';
+        const container = document.getElementById('memberList');
+        const title = document.getElementById('pageTitle');
+
+        const config = {
+            inti: {
+                label: 'PANITIA INTI',
+                filter: m => ['Ketua Acara', 'Wakil Acara', 'Sekertaris', 'Bendahara', 'Kendaraan'].some(r => m.divisi.includes(r))
+            },
+            timekeeper: {
+                label: 'TIMEKEEPER',
+                filter: m => m.divisi === 'Timekeeper'
+            },
+            kesehatan: {
+                label: 'KESEHATAN',
+                filter: m => m.divisi === 'Kesehatan'
+            },
+            photo: {
+                label: 'PHOTO BEFORE AFTER',
+                filter: m => m.divisi.includes('Photo Before After')
+            },
+            bakar: {
+                label: 'TIM BAKAR FROZEN FOOD',
+                filter: m => m.divisi === 'Bakar Frozen Food'
+            },
+            tenda: {
+                label: 'TENDA',
+                filter: m => m.divisi === 'Tenda'
+            },
+            mc: {
+                label: 'MC',
+                filter: m => m.divisi === 'MC'
+            },
+            komdigi: {
+                label: 'KOMDIGI',
+                filter: m => m.divisi === 'Komdigi' || m.divisi.includes('Komdigi')
+            },
+            acara: {
+                label: 'ACARA',
+                filter: m => m.divisi === 'Acara'
+            },
+            ketua: {
+                label: 'KETUA KELOMPOK',
+                filter: m => m.divisi === 'Ketua Kelompok' || m.divisi.includes('Ketua Kelompok')
+            },
+            kebersihan: {
+                label: 'KEBERSIHAN',
+                filter: m => m.divisi === 'Kebersihan'
+            },
+            konsumsi: {
+                label: 'KONSUMSI',
+                sub: [
+                    { label: 'Pagi Hari 1', filter: m => m.piket === 'Pagi Hari 1' },
+                    { label: 'Pagi Hari 2', filter: m => m.piket === 'Pagi Hari 2' },
+                    { label: 'Pagi Hari 3', filter: m => m.piket === 'Pagi Hari 3' },
+                    { label: 'Siang Hari 2', filter: m => m.piket === 'Siang Hari 2' },
+                    { label: 'Siang Hari 3', filter: m => m.piket === 'Siang Hari 3' },
+                    { label: 'Malam Hari 1', filter: m => m.piket === 'Malam Hari 1' },
+                    { label: 'Malam Hari 2', filter: m => m.piket === 'Malam Hari 2' },
+                ]
+            }
+        };
+
+        const cfg = config[type];
+        if (!cfg) { container.innerHTML = '<div class="empty-state">Halaman tidak ditemukan</div>'; }
+
+        title.textContent = cfg.label;
+        let html = '';
+
+        if (cfg.sub) {
+            cfg.sub.forEach(s => {
+                const members = memberDatabase.filter(s.filter);
+                if (members.length === 0) return;
+                html += `<div class="sub-group"><div class="sub-title">${s.label}</div>`;
+                members.forEach(m => {
+                    html += `<div class="member-card"><span class="name">${m.name}</span><span class="badge">${m.divisi}</span></div>`;
+                });
+                html += `</div>`;
+            });
+        } else {
+            const members = memberDatabase.filter(cfg.filter);
+            if (members.length === 0) {
+                html = '<div class="empty-state">Tidak ada anggota</div>';
+            } else {
+                members.forEach(m => {
+                    html += `<div class="member-card"><span class="name">${m.name}</span><span class="badge">${m.divisi}</span></div>`;
+                });
+            }
+        }
+
+        container.innerHTML = html;
+    </script>
+</body>
+</html>

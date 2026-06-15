@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok Offroad - Bogor Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .kelompok-page { padding: 20px; display: flex; flex-direction: column; gap: 30px; }
+        .kelompok-page .back-link { text-decoration: none; color: #fff; font-size: clamp(11px, 3.5vw, 13px); font-weight: bold; background: #8c5d52; padding: 8px 16px; border-radius: 20px; align-self: flex-start; }
+        .kelompok-page .kategori-title { font-size: clamp(17px, 6vw, 22px); font-style: italic; color: #fff; text-shadow: 1px 1px 4px rgba(0,0,0,0.2); margin: 5px 0 10px; word-break: break-word; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+        .group-card { background: #fbeee6; border-radius: 16px; padding: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); border: 2px solid #bd9687; }
+        .group-card .card-header { font-weight: bold; color: #8c5d52; font-size: clamp(11px, 3.5vw, 13px); border-bottom: 2px solid #bd9687; padding-bottom: 6px; margin-bottom: 8px; }
+        .group-card .member-list { list-style: none; padding: 0; margin: 0; }
+        .group-card .member-list li { font-size: clamp(10px, 3vw, 12px); color: #5a4b41; padding: 3px 0; border-bottom: 1px dashed #e1bca7; }
+        .group-card .member-list li:last-child { border-bottom: none; }
+        .group-card .member-list li .ketua-badge { color: #8c5d52; font-weight: bold; font-size: clamp(8px, 2.5vw, 10px); }
+        .group-card .empty-state { font-size: clamp(9px, 2.8vw, 11px); color: #999; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="app-container kelompok-page">
+        <a href="index.html" class="back-link">← KEMBALI</a>
+        <h2 class="kategori-title">KELOMPOK OFFROAD</h2>
+        <div class="card-grid" id="cardGrid"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const grid = document.getElementById('cardGrid');
+        let html = '';
+        for (let i = 1; i <= 7; i++) {
+            const label = `Kelompok ${i}`;
+            const members = memberDatabase.filter(m => m.offroad.includes(label));
+            html += `<div class="group-card"><div class="card-header">${label}</div><ul class="member-list">`;
+            if (members.length === 0) { html += `<li class="empty-state">Tidak ada anggota</li>`; }
+            else { members.forEach(m => { const isKetua = m.offroad.includes('Ketua'); html += `<li>${m.name}${isKetua ? ' <span class="ketua-badge">(KETUA)</span>' : ''}</li>`; }); }
+            html += `</ul></div>`;
+        }
+        grid.innerHTML = html;
+    </script>
+</body>
+</html>
