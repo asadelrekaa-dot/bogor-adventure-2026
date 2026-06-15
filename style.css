@@ -231,73 +231,6 @@ body {
     gap: 8px;
 }
 
-/* CONTAINER DAFTAR KELOMPOK AKTIF */
-.detail-list-container {
-    background-color: #fbeee6;
-    border-radius: 20px;
-    padding: 16px;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
-    border: 2px solid #bd9687;
-}
-
-.detail-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #bd9687;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-    gap: 8px;
-}
-
-.detail-header h3 {
-    color: #8c5d52;
-    font-size: clamp(12px, 3.5vw, 15px);
-    font-weight: bold;
-    word-break: break-word;
-}
-
-#closeDetailBtn {
-    background: #8c5d52;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 11px;
-    flex-shrink: 0;
-}
-
-.detail-content {
-    max-height: 60vh;
-    overflow-y: auto;
-    text-align: left;
-    -webkit-overflow-scrolling: touch;
-}
-
-.group-block {
-    margin-bottom: 15px;
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.group-title-label {
-    font-weight: bold;
-    color: #8c5d52;
-    border-bottom: 1px dashed #e1bca7;
-    padding-bottom: 4px;
-    margin-bottom: 6px;
-    font-size: clamp(11px, 3vw, 13px);
-}
-
-.member-name-item {
-    font-size: clamp(11px, 3vw, 13px);
-    padding: 3px 0;
-    color: #5a4b41;
-}
-
 .hidden {
     display: none !important;
 }
@@ -328,6 +261,47 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+.footer-section-title {
+    color: rgba(255,255,255,0.8);
+    font-size: clamp(9px, 2.5vw, 11px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+}
+
+.footer-divider {
+    width: 40px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    margin-bottom: -5px;
+}
+
+.footer-map {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.footer-map iframe {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: 0;
+}
+
+.map-label {
+    font-size: clamp(9px, 2.5vw, 11px);
+    color: rgba(255,255,255,0.7);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+    width: 100%;
+    padding-left: 4px;
 }
 
 .logo-circle.micro {
@@ -396,10 +370,11 @@ body {
 }
 
 .modal-content h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #8c5d52;
-    font-size: clamp(15px, 4.5vw, 18px);
+    font-size: clamp(16px, 5vw, 20px);
     word-break: break-word;
+    text-align: center;
 }
 
 .modal-content hr {
@@ -409,10 +384,30 @@ body {
     margin-bottom: 15px;
 }
 
-.modal-content p {
-    margin: 6px 0;
-    font-size: clamp(11px, 3vw, 13px);
-    word-break: break-word;
+.modal-field {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border: 1px solid #e1bca7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-field .field-label {
+    font-size: clamp(9px, 2.5vw, 11px);
+    color: #8c5d52;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.modal-field .field-value {
+    font-size: clamp(10px, 2.8vw, 12px);
+    color: #5a4b41;
+    text-align: right;
+    font-weight: 600;
 }
 
 .close-modal {
@@ -424,6 +419,7 @@ body {
     cursor: pointer;
     color: #8c5d52;
     padding: 4px 8px;
+    line-height: 1;
 }
 
 /* table scroll for small screens */

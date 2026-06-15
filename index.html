@@ -87,12 +87,12 @@
             <section id="divisi-section" class="section-container text-center">
                 <h2 class="section-title-large">DIVISI & PIKET</h2>
                 <div class="grid-2x3">
-                    <div class="card-square clickable-card" data-type="konsumsi-pagi">PIKET KONSUMSI<br><b>PAGI (H1/H2/H3)</b></div>
-                    <div class="card-square clickable-card" data-type="konsumsi-siang">PIKET KONSUMSI<br><b>SIANG & KAWAH</b></div>
-                    <div class="card-square clickable-card" data-type="konsumsi-malam">PIKET KONSUMSI<br><b>MALAM (H1/H2)</b></div>
-                    <div class="card-square clickable-card" data-type="frozen-food">TIM BAKAR<br><b>FROZEN FOOD</b></div>
-                    <div class="card-square clickable-card" data-type="panitia-inti">PANITIA INTI<br><b>STRUKTURAL</b></div>
-                    <div class="card-square clickable-card" data-type="divisi-lain">DIVISI LAPANGAN<br><b>KEBERSIHAN/KESEHATAN</b></div>
+                    <a href="divisi.html?type=konsumsi-pagi" class="card-square" style="text-decoration:none;">PIKET KONSUMSI<br><b>PAGI (H1/H2/H3)</b></a>
+                    <a href="divisi.html?type=konsumsi-siang" class="card-square" style="text-decoration:none;">PIKET KONSUMSI<br><b>SIANG & KAWAH</b></a>
+                    <a href="divisi.html?type=konsumsi-malam" class="card-square" style="text-decoration:none;">PIKET KONSUMSI<br><b>MALAM (H1/H2)</b></a>
+                    <a href="divisi.html?type=frozen-food" class="card-square" style="text-decoration:none;">TIM BAKAR<br><b>FROZEN FOOD</b></a>
+                    <a href="divisi.html?type=panitia-inti" class="card-square" style="text-decoration:none;">PANITIA INTI<br><b>STRUKTURAL</b></a>
+                    <a href="divisi.html?type=divisi-lain" class="card-square" style="text-decoration:none;">DIVISI LAPANGAN<br><b>KEBERSIHAN/KESEHATAN</b></a>
                 </div>
             </section>
 
@@ -114,17 +114,8 @@
                 </div>
             </section>
 
-            <section id="detailListSection" class="detail-list-container hidden">
-                <div class="detail-header">
-                    <h3 id="detailTitle">Nama Kelompok</h3>
-                    <button id="closeDetailBtn">Tutup ×</button>
-                </div>
-                <div id="detailContent" class="detail-content">
-                    </div>
-            </section>
-
             <section id="folder-section" class="section-container text-center">
-                <h2 class="section-title-large">NOPHO</h2>
+                <h2 class="section-title-large">Notee</h2>
                 <a href="https://drive.google.com/drive/folders/1pPTmFSzPqtbpgSoNdYkEfg1twKszm3Ts?usp=sharing" target="_blank" class="btn-pill" style="text-decoration:none;">
                     <i class="fas fa-folder-open"></i> PHOTO BOGOR ADVENTURE
                 </a>
@@ -140,12 +131,27 @@
                 <div class="logo-circle micro">
                     <img src="Images/logo.png" alt="Bogor Adventure">
                 </div>
+
+                <div class="footer-section-title">Kontak</div>
+                <div class="footer-divider"></div>
                 <div class="grid-2x2">
-                    <div class="btn-small-pill">ASADEL</div>
-                    <div class="btn-small-pill">PUTRI</div>
-                    <div class="btn-small-pill">SAUSAN</div>
-                    <div class="btn-small-pill">RIZKA</div>
+                    <a href="https://wa.me/6289684340230" target="_blank" class="btn-small-pill" style="text-decoration:none;">ASADEL</a>
+                    <a href="https://wa.me/6281370563687" target="_blank" class="btn-small-pill" style="text-decoration:none;">PUTRI</a>
+                    <a href="https://wa.me/6285640959396" target="_blank" class="btn-small-pill" style="text-decoration:none;">SAUSAN</a>
+                    <a href="https://wa.me/6281213060590" target="_blank" class="btn-small-pill" style="text-decoration:none;">RIZKA</a>
                 </div>
+
+                <div class="footer-section-title">Lokasi</div>
+                <div class="footer-divider"></div>
+                <div class="footer-map">
+                    <div class="map-label">📍 TITIK KUMPUL - CR ONE CISADANE</div>
+                    <iframe src="https://maps.google.com/maps?q=-6.7021103,106.8171822&z=15&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="footer-map">
+                    <div class="map-label">🏠 VILLA - BUAH NAGA CARINGIN</div>
+                    <iframe src="https://maps.google.com/maps?q=Villa%20Buah%20Naga%20Caringin%20Bogor&z=15&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
                 <p class="credits">@WEBBY.ASADEL</p>
             </section>
 
@@ -157,13 +163,13 @@
             <span class="close-modal">&times;</span>
             <h2 id="modalName">Nama Anggota</h2>
             <hr>
-            <p><strong>Jabatan / Divisi:</strong> <span id="modalDivisi">-</span></p>
-            <p><strong>Jadwal Piket:</strong> <span id="modalTugas">-</span></p>
-            <p><strong>Kelompok Gunung:</strong> <span id="modalGunung">-</span></p>
-            <p><strong>Kelompok Kamar:</strong> <span id="modalKamar">-</span></p>
-            <p><strong>Kelompok Rafting:</strong> <span id="modalRafting">-</span></p>
-            <p><strong>Kelompok Offroad:</strong> <span id="modalOffroad">-</span></p>
-            <p><strong>Kelompok Mobil Bak:</strong> <span id="modalMback">-</span></p>
+            <div class="modal-field"><span class="field-label">Jabatan / Divisi</span><span class="field-value" id="modalDivisi">-</span></div>
+            <div class="modal-field"><span class="field-label">Jadwal Piket</span><span class="field-value" id="modalTugas">-</span></div>
+            <div class="modal-field"><span class="field-label">Kelompok Gunung</span><span class="field-value" id="modalGunung">-</span></div>
+            <div class="modal-field"><span class="field-label">Kelompok Kamar</span><span class="field-value" id="modalKamar">-</span></div>
+            <div class="modal-field"><span class="field-label">Kelompok Rafting</span><span class="field-value" id="modalRafting">-</span></div>
+            <div class="modal-field"><span class="field-label">Kelompok Offroad</span><span class="field-value" id="modalOffroad">-</span></div>
+            <div class="modal-field"><span class="field-label">Kelompok Mobil Bak</span><span class="field-value" id="modalMback">-</span></div>
         </div>
     </div>
 
