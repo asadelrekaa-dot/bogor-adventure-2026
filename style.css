@@ -305,15 +305,16 @@ body {
 .btn-pill {
     background-color: #8c5d52;
     color: white;
-    padding: 14px 16px;
+    padding: 14px 20px;
     border-radius: 25px;
-    text-align: left;
+    text-align: center;
     font-size: clamp(10px, 3vw, 12px);
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px;
     margin-bottom: 10px;
     word-break: break-word;
 }
